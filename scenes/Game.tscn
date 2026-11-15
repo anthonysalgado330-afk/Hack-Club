@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cq6ba5q5cgibg"]
+
+[ext_resource type="Script" uid="uid://djb46r8sr2x6p" path="res://Player.gd" id="1_aug50"]
+[ext_resource type="Texture2D" uid="uid://bqskr8a0ssccm" path="res://assets/Idle1.png" id="2_kiw3p"]
+[ext_resource type="Texture2D" uid="uid://byubsa3fyvlms" path="res://assets/Idle2 (1).png" id="3_400sg"]
+[ext_resource type="Texture2D" uid="uid://cjaqnrn0qbkf5" path="res://assets/Idle3.png" id="4_g4kob"]
+[ext_resource type="Texture2D" uid="uid://b62mkvhbeb6un" path="res://assets/Idle4.png" id="5_qy1jj"]
+[ext_resource type="Texture2D" uid="uid://bcqxwyrb851lq" path="res://assets/Table.png" id="6_3xj3m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h45xw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kiw3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_400sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g4kob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qy1jj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_80iay"]
+radius = 59.0
+height = 262.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h45xw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o143"]
+size = Vector2(560.0369, 370)
+
+[node name="Game" type="Node2D" unique_id=746243609]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2049725909]
+script = ExtResource("1_aug50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=451360803]
+position = Vector2(-123, -114)
+sprite_frames = SubResource("SpriteFrames_h45xw")
+autoplay = "default"
+frame_progress = 0.743288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1653703146]
+position = Vector2(-359, -362)
+shape = SubResource("CapsuleShape2D_80iay")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=597583682]
+position = Vector2(-351, -315)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=870457588]
+position = Vector2(330, 405)
+physics_material_override = SubResource("PhysicsMaterial_h45xw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=830702228]
+position = Vector2(1048, 52)
+scale = Vector2(8.813477, 2.0683594)
+texture = ExtResource("6_3xj3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1513933607]
+position = Vector2(918.5, -82)
+scale = Vector2(7.61914, 1)
+shape = SubResource("RectangleShape2D_0o143")
